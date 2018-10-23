@@ -4,7 +4,7 @@ const characterElement = document.querySelector('.character');
 const character = {x:0, y:0};
 
 const friend = [
-  {x:10, y:0}
+  {x:11, y:11}
 ]
 
 const desks = [
@@ -38,7 +38,6 @@ const desks = [
   {x:9, y:4},
   {x:10, y:4},
   {x:11, y:4}
-
 ];
 
 const coworkers = [
@@ -50,20 +49,17 @@ const coworkers = [
   {x:9, y:9},
 ];
 
-const stars = [
+const foodz = [
   {x:0, y:1},
   {x:0, y:7},
-  {x:0, y:11},
   {x:1, y:4},
   {x:2, y:0},
   {x:5, y:1},
+  {x:6, y:7},
   {x:9, y:5}
-
-
 ];
 
-
-
+/// Render desks to board
 const renderDesks = () => {
   for (let i = 0; i < desks.length; i +=1){
     const desk = desks[i];
@@ -76,7 +72,7 @@ const renderDesks = () => {
 }
 renderDesks();
 
-
+/// Render coworkers to board
 const renderCoworkers = () => {
   for (let i = 0; i < coworkers.length; i +=1){
     const coworker = coworkers[i];
@@ -91,7 +87,23 @@ const renderCoworkers = () => {
 }
 renderCoworkers();
 
+/// Render food to board
+const renderFood = () => {
+  for (let i = 0; i < foodz.length; i +=1){
+    const food = foodz[i];
+    const foodElement = document.createElement('div');
+    foodElement.className = 'food';
+    foodElement.id= `food${i}`;
+    foodElement.style.left = (food.x * 100).toString() + 'px';
+    foodElement.style.top = (food.y * 100).toString() + 'px';
+    boardElement.appendChild(foodElement);
+    console.log(food);
+  }
+}
+renderFood();
 
+
+/// MOVE LOGIC :
 // check to see if character is on the board
 const isCoordinateInGrid =(x,y) =>{
   if (x<0 || y<0 || x>11 || y>11) {
@@ -99,8 +111,6 @@ const isCoordinateInGrid =(x,y) =>{
   }
     return true;
 }
-
-
 //check to see if the square contains desk
 const isThereDesk = function(x,y){
   for (let i = 0; i < desks.length; i++) {
@@ -111,7 +121,6 @@ const isThereDesk = function(x,y){
   }
   return false;
 }
-
 //check to see if the square contains coworker
 const isThereCoworker = function(x,y){
   for (let i = 0; i < coworkers.length; i++) {
@@ -122,15 +131,6 @@ const isThereCoworker = function(x,y){
   }
   return false;
 }
-
-
-// Move character
-const moveCharacter = function (x,y){
-  const character = document.querySelector('.character');
-  character.style.top = (y*100).toString() + "px";
-  character.style.left= (x*100).toString() + "px";
-}
-
 
 //Check to see if character can move to a space
 const canMoveTo = (x, y) => {
@@ -149,8 +149,69 @@ const canMoveTo = (x, y) => {
   }
   return true;
 };
-///
 
+// Move character
+const moveCharacter = function (x,y){
+  const character = document.querySelector('.character');
+  character.style.top = (y*100).toString() + "px";
+  character.style.left= (x*100).toString() + "px";
+}
+
+
+
+// if canMoveTo return true,  run moveCharacter()
+
+const moveRight = function(){
+  if (canMoveTo(character.x + 1, characters.y)){
+    character.x +=1;
+    moveCharacter(character.x + 1)
+  }
+}
+
+const moveLeft = function(){
+  if(canMoveTo(character.x - 1, character.y)){
+    character.x -=1;
+    moveCharacter(character.x - 1);
+  }
+}
+
+const moveUp = function(){
+  if(canMoveTo(character.x, character.y + 1)){
+    character.y +=1;
+    moveCharacter(character.y +1);
+  }
+}
+
+const moveDown = function(){
+  if(character.x, character.y + 1){
+    character -=1;
+    moveCharacter(character.y +1);
+  }
+}
+
+
+document.body.addEventListener('keydown', evt => {
+  const keyCode = evt.keyCode;
+  if ([37, 38, 39, 40].includes(evt.keyCode)) {
+    evt.preventDefault();
+  }
+  switch (evt.keyCode) {
+    case 37:
+    moveLeft();
+    break;
+    case 38:
+    moveUp();
+    break;
+    case 39:
+    moveRight();
+    break;
+    case 40:
+    moveDown();
+    break;
+  }
+});
+
+///Pickup food
 function collectFood(){
   for(let i = 0; i < food.length; i +=1){
       if (food[i].x === character.x &&  food[i].y ===character.y) {

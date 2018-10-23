@@ -48,17 +48,16 @@ background: lightgrey;
 }
 
 .character {
-  width: 80px;
-  height: 80px;
-
 }
 
 
 .desk {
-  height: 80px;
-  width: 80px;
   margin: 0;
   background: grey;
+}
+
+.food {
+  background: pink;
 }
 
 .coworker {
@@ -74,12 +73,12 @@ background: lightgrey;
 
 #hero {
   background: blue;
+  
 }
 
 #friend-icon {
   position: relative;
   left: 30%;
   background: green;
-  width: 80px;
-  height: 80px;
+
 }

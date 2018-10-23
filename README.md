@@ -29,6 +29,6 @@ Technical Specifications:
 
 The page will load with the triangle in the lower right corner.  The user will control the triangle with the arrow keys on their keyboard.
 
-They cannot move off the game board, through walls or into any circle. Nothing besides lack of movement will be an effect of running into a wall or to the edge of the gameboard, but if the user tries to move the triangle to a square with an orange circle, they lose and the game will reset.
+They cannot move off the game board, through walls or into any circle. Nothing besides lack of movement will be an effect of running into a wall or to the edge of the game board, but if the user tries to move the triangle to a square with an orange circle, they lose and the game will reset.
 
 The objective of the game is to collect all the stars and then move to the square next to the green circle. When you win, a dialog box will appear & the game will reset (or proceed to the next game level- if the level exists).
