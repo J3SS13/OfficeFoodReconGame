@@ -1,6 +1,6 @@
 
 
-![alt text](https://github.com/J3SS13/OfficeFoodReconGame/blob/master/IntroDialog.png)
+![alt text](https://github.com/J3SS13/OfficeFoodReconGame/blob/master/styleguide10x10.jpg)
 
 
 Objective:
@@ -9,9 +9,6 @@ You cannot walk off the board or through the desks and orange dots. You lose if 
 
 Game Play:
 The UI interaction will be an office setting. The triangle is the character, navigating the office to find free food. They must avoid annoying coworkers, walk around desks, and collect the food. Once they have collected all the food, they need to meet their friend in the room at the top right. If they run into an orange dot, they will have to start over.
-
-![alt text](https://github.com/J3SS13/OfficeFoodReconGame/blob/master/styleguide10x10.jpg)
-
 
 
 Phase 2:  
