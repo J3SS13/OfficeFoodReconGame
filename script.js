@@ -1,5 +1,5 @@
 const boardElement = document.querySelector('.board');
-const blerfElement = document.querySelector('.character');
+const characterElement = document.querySelector('.character');
 
 const character = {x:0, y:0};
 
@@ -47,7 +47,7 @@ const coworkers = [
   {x:2, y:9},
   {x:6, y:3},
   {x:8, y:5},
-  {x:8, y:9},
+  {x:9, y:9},
 ];
 
 const stars = [
@@ -81,11 +81,12 @@ const renderCoworkers = () => {
   for (let i = 0; i < coworkers.length; i +=1){
     const coworker = coworkers[i];
     const coworkerElement = document.createElement('div');
-    coworkerElement.classname = 'coworker';
+    coworkerElement.className = 'coworker';
     coworkerElement.id= `coworker${i}`;
-    coworkerElement.style.left = (coworkers.x * 100).toString() + 'px';
-    coworkerElement.style.top = (coworkers.y * 100).toString() + 'px';
+    coworkerElement.style.left = (coworker.x * 100).toString() + 'px';
+    coworkerElement.style.top = (coworker.y * 100).toString() + 'px';
     boardElement.appendChild(coworkerElement);
+    console.log(coworker);
   }
 }
 renderCoworkers();
