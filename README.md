@@ -13,10 +13,10 @@ The UI interaction will be an office setting. The triangle is the character, nav
 
 Phase 2:  
 Add home page with rules, an introduction, story & start button.
-The orange dots pace back and forth.
+The orange dots pace back and forth. Add music that plays throughout the game. 
 
 Phase 3:
-Set a time limit with a count down clock (change lose condition to running out of time).  Now, if you run into an orange dot, there is a text box you read and then the triangle is reset to the starting position.
+Set a time limit with a count down clock (change lose condition to running out of time).  Now, if you run into an orange dot, there is a text box you read and then the triangle is reset to the starting position. Add sound effects when collecting food, running into walls, and running into coworkers.
 
 Main Technologies:
 Javascript, grid collision

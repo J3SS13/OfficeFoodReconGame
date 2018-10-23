@@ -6,6 +6,7 @@ const character = {x:0, y:0};
 const friend = [
   {x:11, y:11}
 ]
+let foodEaten = 0;
 
 const desks = [
   {x:0, y:10},
@@ -117,7 +118,7 @@ const isCoordinateInGrid =(x,y) =>{
 }
 //check to see if the square contains desk
 const isThereDesk = function(x,y){
-  for (let i = 0; i < desks.length; i++) {
+  for (let i = 0; i < desks.length; i +=1) {
     const desk = desks[i];
     if (desk.x === x && desk.y === y) {
       return true;
@@ -127,13 +128,25 @@ const isThereDesk = function(x,y){
 }
 //check to see if the square contains coworker
 const isThereCoworker = function(x,y){
-  for (let i = 0; i < coworkers.length; i++) {
+  for (let i = 0; i < coworkers.length; i +=1) {
     const coworker = coworkers[i];
     if (coworker.x === x && coworker.y === y) {
       return true;
     }
   }
   return false;
+}
+
+const eatTheFood = function(x,y){
+  for(let i = 0; i < foodz.length; i +=1){
+    const food = foodz[i];
+    if(food.x === character.x && food.y === character.y) {
+      console.log('this is happening')
+      const food = document.querySelector(`#food${i}`)
+    food.setAttribute('style', 'display: none')
+      foodEaten += 1;
+    }
+  }
 }
 
 //Check to see if character can move to a space
@@ -159,6 +172,7 @@ const moveCharacter = function (x,y){
   const character = document.querySelector('.character');
   character.style.top = (y*100).toString() + "px";
   character.style.left= (x*100).toString() + "px";
+  eatTheFood();
 }
 
 
@@ -174,7 +188,7 @@ const moveRight = function(){
 }
 
 const moveLeft = function(){
-  if(canMoveTo(character.x, character.y)){
+  if(canMoveTo(character.x - 1, character.y)){
     character.x -=1;
     console.log("left");
     moveCharacter(character.x, character.y);
@@ -219,15 +233,16 @@ document.body.addEventListener('keydown', evt => {
   }
 });
 
-///Pickup food
-function collectFood(){
-  for(let i = 0; i < food.length; i +=1){
-      if (food[i].x === character.x &&  food[i].y ===character.y) {
-        console.log('this is happening')
-        const food = document.querySelector(`#food${i}`)
-      food.setAttribute('style', 'display: none')
-        food[i].x = null;
-        food[i].y = null;
-      }
-  }
-}
+// /Pickup food
+// function collectFood(){
+//   for(let i = 0; i < food.length; i +=1){
+//       if (food[i].x === character.x &&  food[i].y ===character.y) {
+//         console.log('this is happening')
+//         const food = document.querySelector(`#food${i}`)
+//       food.setAttribute('style', 'display: none')
+//         food[i].x = null;
+//         food[i].y = null;
+//       }
+//   }
+//
+// }
