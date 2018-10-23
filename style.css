@@ -1,0 +1,81 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  display: flex;
+
+}
+
+header{
+
+}
+
+
+
+
+main{
+
+
+}
+
+div {
+height: 100px;
+width: 100px;
+position: absolute;
+
+}
+
+nav{
+
+}
+
+footer{
+
+}
+
+.right{
+
+}
+
+.left{
+
+}
+
+.board{
+height: 1200px;
+width: 1200px;
+background: lightgrey;
+}
+
+
+.character {
+  padding: 5px;
+  background: blue;
+}
+
+.desk {
+  height: 90px;
+  width: 90px;
+  margin: 0;
+  background: grey;
+}
+
+.coworker {
+  background: orange;
+}
+
+.friend {
+  height: 300px;
+  width: 300px;
+  position: relative;
+  left: 900px;
+}
+
+#friend-icon {
+  position: relative;
+  left: 30%;
+  background: green;
+}
