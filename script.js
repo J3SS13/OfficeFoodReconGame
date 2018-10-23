@@ -59,6 +59,8 @@ const foodz = [
   {x:9, y:5}
 ];
 
+
+
 /// Render desks to board
 const renderDesks = () => {
   for (let i = 0; i < desks.length; i +=1){
@@ -101,6 +103,8 @@ const renderFood = () => {
   }
 }
 renderFood();
+
+
 
 
 /// MOVE LOGIC :
@@ -162,30 +166,34 @@ const moveCharacter = function (x,y){
 // if canMoveTo return true,  run moveCharacter()
 
 const moveRight = function(){
-  if (canMoveTo(character.x + 1, characters.y)){
+  if (canMoveTo(character.x + 1, character.y)){
     character.x +=1;
-    moveCharacter(character.x + 1)
+    console.log("right");
+    moveCharacter(character.x , character.y)
   }
 }
 
 const moveLeft = function(){
-  if(canMoveTo(character.x - 1, character.y)){
+  if(canMoveTo(character.x, character.y)){
     character.x -=1;
-    moveCharacter(character.x - 1);
+    console.log("left");
+    moveCharacter(character.x, character.y);
   }
 }
 
 const moveUp = function(){
-  if(canMoveTo(character.x, character.y + 1)){
-    character.y +=1;
-    moveCharacter(character.y +1);
+  if(canMoveTo(character.x, character.y - 1)){
+    character.y -=1;
+    console.log("up");
+    moveCharacter(character.x, character.y);
   }
 }
 
 const moveDown = function(){
-  if(character.x, character.y + 1){
-    character -=1;
-    moveCharacter(character.y +1);
+  if(canMoveTo(character.x, character.y + 1)){
+    character.y +=1;
+    console.log("down")
+    moveCharacter(character.x, character.y);
   }
 }
 
