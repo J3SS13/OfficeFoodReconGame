@@ -6,7 +6,7 @@ You lose if you run into an orange dot & you cannot walk through the walls or or
 Game Play:
 The UI interaction will be an office setting. The triangle is the character, navigating the office to find free food. They must avoid annoying coworkers, walk around desks, and collect the food. Once they have collected all the food, they need to meet their friend in the room at the top right. If they run into an orange dot, they will have to start over.
 
-![alt text](style_guide_10x10.pdf)
+![alt text](https://github.com/J3SS13/OfficeFoodReconGame/blob/master/style_guide_10x10.pdf)
 
 
 
