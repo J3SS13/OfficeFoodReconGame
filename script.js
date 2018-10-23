@@ -82,6 +82,7 @@ const renderCoworkers = () => {
     const coworker = coworkers[i];
     const coworkerElement = document.createElement('div');
     coworkerElement.classname = 'coworker';
+    coworkerElement.id= `coworker${i}`;
     coworkerElement.style.left = (coworkers.x * 100).toString() + 'px';
     coworkerElement.style.top = (coworkers.y * 100).toString() + 'px';
     boardElement.appendChild(coworkerElement);

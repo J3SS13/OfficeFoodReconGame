@@ -13,9 +13,6 @@ header{
 
 }
 
-
-
-
 main{
 
 
@@ -50,15 +47,16 @@ width: 1200px;
 background: lightgrey;
 }
 
-
 .character {
-  padding: 5px;
-  background: blue;
+  width: 80px;
+  height: 80px;
+
 }
 
+
 .desk {
-  height: 90px;
-  width: 90px;
+  height: 80px;
+  width: 80px;
   margin: 0;
   background: grey;
 }
@@ -67,15 +65,21 @@ background: lightgrey;
   background: orange;
 }
 
-.friend {
+#friend-zone {
   height: 300px;
   width: 300px;
   position: relative;
   left: 900px;
 }
 
+#hero {
+  background: blue;
+}
+
 #friend-icon {
   position: relative;
   left: 30%;
   background: green;
+  width: 80px;
+  height: 80px;
 }
