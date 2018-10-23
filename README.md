@@ -1,20 +1,22 @@
 
+
+![alt text](https://github.com/J3SS13/OfficeFoodReconGame/blob/master/IntroDialog.png)
+
+
 Objective:
 Avoid the orange dots, collect the stars, and bring them to your friend.
-You lose if you run into an orange dot & you cannot walk through the walls or orange dots.
+You cannot walk off the board or through the desks and orange dots. You lose if you run into an orange dot. You win when you collect all the stars, and find your friend.
 
 Game Play:
 The UI interaction will be an office setting. The triangle is the character, navigating the office to find free food. They must avoid annoying coworkers, walk around desks, and collect the food. Once they have collected all the food, they need to meet their friend in the room at the top right. If they run into an orange dot, they will have to start over.
 
 ![alt text](https://github.com/J3SS13/OfficeFoodReconGame/blob/master/styleguide10x10.jpg)
 
-![alt text](https://github.com/J3SS13/OfficeFoodReconGame/blob/master/IntroDialog.png)
 
-MVP:
-The triangle is the only thing that moves during the game.
 
 Phase 2:  
-Add home page with rules & start button. The orange dots pace back and forth.
+Add home page with rules, an introduction, story & start button.
+The orange dots pace back and forth.
 
 Phase 3:
 Set a time limit with a count down clock (change lose condition to running out of time).  Now, if you run into an orange dot, there is a text box you read and then the triangle is reset to the starting position.
