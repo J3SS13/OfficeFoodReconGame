@@ -16,6 +16,7 @@ const friendZone = [
 let foodEaten = 0;
 
 const desks = [
+  {x:0, y:0},
   {x:0, y:10},
   {x:1, y:10},
   {x:2, y:10},
@@ -67,6 +68,8 @@ const foodz = [
   {x:9, y:5}
 ];
 
+console.log(foodz[0].x);
+console.log(foodz[0].y);
 
 
 /// Render desks to board
@@ -101,7 +104,7 @@ const renderFood = () => {
     const food = foodz[i];
     const foodElement = document.createElement('div');
     foodElement.className = 'food';
-    foodElement.id= `food${i}`;
+    foodElement.id= `food${i.x}${i.y}`;
     foodElement.style.left = (food.x * 100).toString() + 'px';
     foodElement.style.top = (food.y * 100).toString() + 'px';
     boardElement.appendChild(foodElement);
@@ -167,10 +170,10 @@ const isThereFriend = function(x,y){
 const isThereFriendZone = function(x,y){
   for (let i = 0; i < friendZone.length; i +=1){
     const friendZ = friendZone[i];
-      if (friendZ.x === character.x && friendZ.y === character.y && foodEaten >= foodz.length){
+      if (friendZ.x === character.x && friendZ.y === character.y && foodz.length === 0){
         console.log("win");
         win();
-      } if (friendZ.x === character.x && friendZ.y === character.y && foodEaten < foodz.length){
+      } if (friendZ.x === character.x && friendZ.y === character.y && foodz.length !== 0){
         console.log("hungry");
         setTimeout(()=> window.alert("I'm so hungryyyy"), 200);
       }
@@ -179,16 +182,26 @@ const isThereFriendZone = function(x,y){
 
 
 const eatTheFood = function(x,y){
+  // debugger
   for(let i = 0; i < foodz.length; i +=1){
     const food = foodz[i];
     if(food.x === character.x && food.y === character.y) {
-      const food = document.querySelector(`#food${i}`)
-    food.setAttribute('style', 'display: none')
-      foodEaten += 1;
+      console.log(foodz[i]);
+      foodz.splice(i, 1);
+      foodEaten +=1;
+
+      const food = document.querySelector(`#food${i.x}${i.y}`)
+      food.setAttribute('style', 'display: none');
 
     }
   }
 }
+
+
+
+
+
+
 
 
 //Check to see if character can move to a space
@@ -279,7 +292,12 @@ document.body.addEventListener('keydown', evt => {
   }
 });
 
+//
+// const setTimer = function() {
 
+
+//
+// }
 
 const win = function() {
         setTimeout(()=> window.alert("Good job finding all the food! Now, let's eat!"), 200);
