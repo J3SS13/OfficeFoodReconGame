@@ -149,23 +149,31 @@ const isThereCoworker = function(x,y){
   }
   return false;
 }
-///hard coded this to resolve issues
+
+
 const isThereFriend = function(x,y){
   for (let i = 0; i < friend.length; i +=1) {
     const friendLocal = friend[i];
     if (friendLocal.x === x && friendLocal.y === y) {
-      setTimeout(()=> window.alert("I'm so hungryyyy"), 200);
+      // setTimeout(()=> window.alert("I'm so hungryyyy"), 200);
       return true;
     }
   }
   return false;
 }
+
+
+
 const isThereFriendZone = function(x,y){
   for (let i = 0; i < friendZone.length; i +=1){
-    const friend = friendZone[i];
-    if (friend.x === character.x && friend.y === character.y && foodEaten >= foodz.length){
-      win();
-    }
+    const friendZ = friendZone[i];
+      if (friendZ.x === character.x && friendZ.y === character.y && foodEaten >= foodz.length){
+        console.log("win");
+        win();
+      } if (friendZ.x === character.x && friendZ.y === character.y && foodEaten < foodz.length){
+        console.log("hungry");
+        setTimeout(()=> window.alert("I'm so hungryyyy"), 200);
+      }
   }
 }
 
@@ -210,7 +218,7 @@ const moveCharacter = function (x,y){
   character.style.top = (y*100).toString() + "px";
   character.style.left= (x*100).toString() + "px";
   eatTheFood();
-  isThereFriend();
+  isThereFriendZone();
 }
 
 
@@ -277,7 +285,7 @@ const win = function() {
         setTimeout(()=> window.alert("Good job finding all the food! Now, let's eat!"), 200);
         // removeListeners();
         setTimeout(resetBoard, 200);
-      }
+}
 
 const lose = function(){
   setTimeout(()=> window.alert("Hey! I need you to fix my computer."), 200);
