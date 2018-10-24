@@ -2,6 +2,7 @@ const boardElement = document.querySelector('.board');
 const characterElement = document.querySelector('.character');
 
 const character = {x:11, y:11};
+const friend = [{x:10, y:0}];
 
 const friendZone = [
   {x:11, y:0},
@@ -142,11 +143,32 @@ const isThereCoworker = function(x,y){
   for (let i = 0; i < coworkers.length; i +=1) {
     const coworker = coworkers[i];
     if (coworker.x === x && coworker.y === y) {
+      lose();
       return true;
     }
   }
   return false;
 }
+///hard coded this to resolve issues
+const isThereFriend = function(x,y){
+  for (let i = 0; i < friend.length; i +=1) {
+    const friendLocal = friend[i];
+    if (friendLocal.x === x && friendLocal.y === y) {
+      setTimeout(()=> window.alert("I'm so hungryyyy"), 200);
+      return true;
+    }
+  }
+  return false;
+}
+const isThereFriendZone = function(x,y){
+  for (let i = 0; i < friendZone.length; i +=1){
+    const friend = friendZone[i];
+    if (friend.x === character.x && friend.y === character.y && foodEaten >= foodz.length){
+      win();
+    }
+  }
+}
+
 
 const eatTheFood = function(x,y){
   for(let i = 0; i < foodz.length; i +=1){
@@ -159,17 +181,6 @@ const eatTheFood = function(x,y){
     }
   }
 }
-
-
-const isThereFriend = function(x,y){
-  for (let i = 0; i < friendZone.length; i +=1){
-    const friend = friendZone[i];
-    if (friend.x === character.x && friend.y === character.y && foodEaten >= foodz.length){
-      win();
-    }
-  }
-}
-
 
 
 //Check to see if character can move to a space
@@ -185,6 +196,9 @@ const canMoveTo = (x, y) => {
     return false;
   }
   if (isThereCoworker(x, y)) {
+    return false;
+  }
+  if (isThereFriend(x, y)) {
     return false;
   }
   return true;
@@ -265,8 +279,16 @@ const win = function() {
         setTimeout(resetBoard, 200);
       }
 
+const lose = function(){
+  setTimeout(()=> window.alert("Hey! I need you to fix my computer."), 200);
+  // removeListeners();
+  setTimeout(resetBoard, 200);
+}
+
 
 const resetBoard = function(){
-          foodEaten = 0;
-          buildBoard();
+      let board = document.body.getElementByClass('board');
+      board.innerHTML = '';
+      foodEaten = 0;
+      buildBoard();
 }
