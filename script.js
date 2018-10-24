@@ -287,8 +287,11 @@ const lose = function(){
 
 
 const resetBoard = function(){
-      let board = document.body.getElementByClass('board');
-      board.innerHTML = '';
+      boardElement.innerHTML = '';
       foodEaten = 0;
+      character.x = 11;
+      character.y = 11;
+      characterElement.style.top = "1100px";
+      characterElement.style.left = "1100px"
       buildBoard();
 }
