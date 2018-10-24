@@ -1,11 +1,17 @@
 const boardElement = document.querySelector('.board');
 const characterElement = document.querySelector('.character');
 
-const character = {x:0, y:0};
+const character = {x:11, y:11};
 
-const friend = [
-  {x:11, y:11}
-]
+const friendZone = [
+  {x:11, y:0},
+  {x:11, y:1},
+  {x:10, y:0},
+  {x:10, y:1},
+  {x:9, y:0},
+  {x:9, y:1}
+
+];
 let foodEaten = 0;
 
 const desks = [
@@ -73,7 +79,6 @@ const renderDesks = () => {
     boardElement.appendChild(deskElement);
   }
 }
-renderDesks();
 
 /// Render coworkers to board
 const renderCoworkers = () => {
@@ -88,7 +93,6 @@ const renderCoworkers = () => {
     console.log(coworker);
   }
 }
-renderCoworkers();
 
 /// Render food to board
 const renderFood = () => {
@@ -103,9 +107,16 @@ const renderFood = () => {
     console.log(food);
   }
 }
-renderFood();
 
 
+
+const buildBoard = function(){
+  renderDesks();
+  renderCoworkers();
+  renderFood();
+}
+
+buildBoard();
 
 
 /// MOVE LOGIC :
@@ -141,13 +152,25 @@ const eatTheFood = function(x,y){
   for(let i = 0; i < foodz.length; i +=1){
     const food = foodz[i];
     if(food.x === character.x && food.y === character.y) {
-      console.log('this is happening')
       const food = document.querySelector(`#food${i}`)
     food.setAttribute('style', 'display: none')
       foodEaten += 1;
+
     }
   }
 }
+
+
+const isThereFriend = function(x,y){
+  for (let i = 0; i < friendZone.length; i +=1){
+    const friend = friendZone[i];
+    if (friend.x === character.x && friend.y === character.y && foodEaten >= foodz.length){
+      win();
+    }
+  }
+}
+
+
 
 //Check to see if character can move to a space
 const canMoveTo = (x, y) => {
@@ -173,6 +196,7 @@ const moveCharacter = function (x,y){
   character.style.top = (y*100).toString() + "px";
   character.style.left= (x*100).toString() + "px";
   eatTheFood();
+  isThereFriend();
 }
 
 
@@ -233,16 +257,16 @@ document.body.addEventListener('keydown', evt => {
   }
 });
 
-// /Pickup food
-// function collectFood(){
-//   for(let i = 0; i < food.length; i +=1){
-//       if (food[i].x === character.x &&  food[i].y ===character.y) {
-//         console.log('this is happening')
-//         const food = document.querySelector(`#food${i}`)
-//       food.setAttribute('style', 'display: none')
-//         food[i].x = null;
-//         food[i].y = null;
-//       }
-//   }
-//
-// }
+
+
+const win = function() {
+        setTimeout(()=> window.alert("Good job finding all the food! Now, let's eat!"), 200);
+        // removeListeners();
+        setTimeout(resetBoard, 200);
+      }
+
+
+const resetBoard = function(){
+          foodEaten = 0;
+          buildBoard();
+}
