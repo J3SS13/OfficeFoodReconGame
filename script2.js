@@ -1,3 +1,42 @@
+
+
+const body = document.querySelector('body');
+const header = body.querySelector('header');
+const playGameButton = body.querySelector('button');
+
+
+
+const buildWelcomePage = function() {
+  playGameButton.id = "play-game";
+
+  playGameButton.addEventListener("click", function(){
+    clickButton();
+    buildBoard();
+  });
+}
+
+
+
+
+
+
+
+buildWelcomePage();
+
+
+const clickButton = ()=>{
+  playGameButton.removeEventListener('click', (buildBoard));
+  header.innerHTML = '<h1>Office Food Recon</h1>';
+}
+
+
+
+
+
+/////////////////////     GAME      ///////////////////////////
+
+
+
 const boardElement = document.querySelector('.board');
 const characterElement = document.querySelector('.character');
 
@@ -62,8 +101,6 @@ const foodz = [
   {x:6, y:7},
   {x:9, y:5}
 ];
-
-
 
 /// Render desks to board
 const renderDesks = () => {
@@ -133,7 +170,7 @@ const buildBoard = function(){
   renderCharacterStyle();
 }
 
-buildBoard();
+// buildBoard();
 
 
 /// MOVE LOGIC :
@@ -308,7 +345,6 @@ const lose = function(){
   // removeListeners();
   setTimeout(resetBoard, 200);
 }
-
 
 const resetBoard = function(){
       boardElement.innerHTML = '';

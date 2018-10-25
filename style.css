@@ -1,9 +1,9 @@
-@keyframes title {
-    0%   {color:#FF2FAF; left:0px; top:0px;}
-    25%  {color:#DC2AE8; left:0px; top:0px;}
-    50%  {color:#BD3BFF; left:0px; top:0px;}
-    75%  {color:#752AE8; left:0px; top:0px;}
-    100% {color:#472FFF; left:0px; top:0px;}
+@keyframes button {
+    0%   {background: #FF2FAF; left:0px; top:0px;}
+    25%  {background: #DC2AE8; left:0px; top:0px;}
+    50%  {background: #BD3BFF; left:0px; top:0px;}
+    75%  {background: #752AE8; left:0px; top:0px;}
+    100% {background: #472FFF; left:0px; top:0px;}
 }
 
 *{-10
@@ -33,13 +33,11 @@ header{
 
 h1 {
   font-family: 'Luckiest Guy', cursive;
-  font-size: 100px;
+  color: limegreen;
+  font-size: 150px;
   margin-top: 30px;
   padding-top: 10px;
   position: relative;
-  color: #752AE8;
-  animation-name: title;
-  animation-duration: 4s;
 
 }
 
@@ -56,6 +54,23 @@ div {
 height: 100px;
 width: 100px;
 position: absolute;
+
+}
+button {
+  height: 200px;
+  width: 400px;
+  border: 10px pink;
+  background: #752AE8;
+  animation-name: button;
+  animation-duration: 4s;
+  color: white;
+  text-align: center;
+  font-family: 'Luckiest Guy', cursive;
+  font-size: 70px;
+}
+
+
+.welcome-board{
 
 }
 
@@ -82,13 +97,6 @@ background: lightgrey;
   background: orange;
 }
 
-/* #friend-zone {
-  height: 300px;
-  width: 300px;
-  position: relative;
-  left: 900px;
-} */
-
 #hero {
   background: blue;
   position: relative;
@@ -99,6 +107,11 @@ background: lightgrey;
 #friend {
   position: relative;
   background: green;
+
+}
+
+#play-game {
+
 
 
 }
