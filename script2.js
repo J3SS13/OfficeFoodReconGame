@@ -9,8 +9,8 @@ const playGameButton = body.querySelector('button');
 const buildWelcomePage = function() {
   playGameButton.className = "play-game";
   playGameButton.addEventListener("click", function(){
-    clickButton();
-    buildBoard();
+    setTimeout(clickButton, 175);
+    setTimeout(buildBoard, 175);
   });
 }
 
