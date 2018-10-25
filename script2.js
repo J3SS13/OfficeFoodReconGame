@@ -162,7 +162,6 @@ const renderCharacterStyle = () => {
 
 
 const buildBoard = function(){
-debugger
 
 footerDiv.innerHTML = "Ready?";
     setTimer =  setInterval(() => {
@@ -252,7 +251,7 @@ const eatTheFood = function(x,y){
     const food = foodz[i];
     if(food.x === character.x && food.y === character.y) {
       const food = document.querySelector(`#food${i}`)
-    food.setAttribute('style', 'display: none')
+    food.remove();
       foodEaten += 1;
 
     }
