@@ -2,16 +2,12 @@ const boardElement = document.querySelector('.board');
 const characterElement = document.querySelector('.character');
 
 const character = {x:11, y:11};
-const friend = [{x:10, y:0}];
+const friends = [{x:10, y:0}];
 
 const friendZone = [
   {x:11, y:0},
-  {x:11, y:1},
-  {x:10, y:0},
   {x:10, y:1},
   {x:9, y:0},
-  {x:9, y:1}
-
 ];
 let foodEaten = 0;
 
@@ -81,6 +77,7 @@ const renderDesks = () => {
   }
 }
 
+
 /// Render coworkers to board
 const renderCoworkers = () => {
   for (let i = 0; i < coworkers.length; i +=1){
@@ -91,7 +88,6 @@ const renderCoworkers = () => {
     coworkerElement.style.left = (coworker.x * 100).toString() + 'px';
     coworkerElement.style.top = (coworker.y * 100).toString() + 'px';
     boardElement.appendChild(coworkerElement);
-    console.log(coworker);
   }
 }
 
@@ -105,17 +101,36 @@ const renderFood = () => {
     foodElement.style.left = (food.x * 100).toString() + 'px';
     foodElement.style.top = (food.y * 100).toString() + 'px';
     boardElement.appendChild(foodElement);
-    console.log(food);
   }
 }
 
+//render friend
+const renderFriend = () => {
+  for(let i = 0; i < friends.length; i +=1){
+    const friend = friends[i];
+    const friendElement = document.createElement('div');
+    friendElement.id = "friend"
+    friendElement.style.left = (friend.x * 100).toString() + 'px';
+    friendElement.style.top = (friend.y * 100).toString() + 'px';
+    boardElement.appendChild(friendElement);
+  }
 
+}
+
+// render hero character
+const renderCharacterStyle = () => {
+  characterElement.id = "hero"
+  characterElement.style.left = (character.x * 100).toString() + 'px';
+  characterElement.style.top = (character.y * 100).toString() + 'px';
+  }
 
 
 const buildBoard = function(){
   renderDesks();
   renderCoworkers();
   renderFood();
+  renderFriend();
+  renderCharacterStyle();
 }
 
 buildBoard();
@@ -153,8 +168,8 @@ const isThereCoworker = function(x,y){
 
 
 const isThereFriend = function(x,y){
-  for (let i = 0; i < friend.length; i +=1) {
-    const friendLocal = friend[i];
+  for (let i = 0; i < friends.length; i +=1) {
+    const friendLocal = friends[i];
     if (friendLocal.x === x && friendLocal.y === y) {
       // setTimeout(()=> window.alert("I'm so hungryyyy"), 200);
       return true;
@@ -298,9 +313,9 @@ const lose = function(){
 const resetBoard = function(){
       boardElement.innerHTML = '';
       foodEaten = 0;
-      character.x = 11;
-      character.y = 11;
-      characterElement.style.top = "1100px";
-      characterElement.style.left = "1100px"
+      // character.x = 11;
+      // character.y = 11;
+      // characterElement.style.top = "1100px";
+      // characterElement.style.left = "1100px"
       buildBoard();
 }

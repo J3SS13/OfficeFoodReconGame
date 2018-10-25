@@ -43,12 +43,6 @@ h1 {
 
 }
 
-/* h4{
-font-family: 'Monda', sans-serif;
-font-size: 50px;
-margin-bottom: 20px;
-padding: 10px;
-} */
 
 main{
  grid-column: 2 / 3;
@@ -64,21 +58,6 @@ width: 100px;
 position: absolute;
 
 }
-
-/* footer{
-grid-area: footer;
-
-}
-
-.right{
-  grid-column: 1 / 3;
-  grid-row: 2 / 2;
-}
-
-.left{
-  grid-column: 1 / 3;
-  grid-row: 2 / 2;
-} */
 
 .board{
 height: 1200px;
@@ -103,12 +82,12 @@ background: lightgrey;
   background: orange;
 }
 
-#friend-zone {
+/* #friend-zone {
   height: 300px;
   width: 300px;
   position: relative;
   left: 900px;
-}
+} */
 
 #hero {
   background: blue;
@@ -117,9 +96,8 @@ background: lightgrey;
   top: 1100px;
 }
 
-#friend-icon {
+#friend {
   position: relative;
-  left: 30%;
   background: green;
 
 
