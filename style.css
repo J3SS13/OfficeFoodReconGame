@@ -28,7 +28,6 @@ header{
   margin-top: 100px;
   margin-bottom: 50px;
 
-
 }
 
 h1 {
@@ -41,7 +40,6 @@ h1 {
 
 }
 
-
 main{
  grid-column: 2 / 3;
  grid-row: 2 / 2;
@@ -50,13 +48,24 @@ main{
 
 }
 
-div {
-height: 100px;
-width: 100px;
-position: absolute;
+p {
+  font-family: Monda, sans-serif;
+  font-size: 40px;
 
 }
-button {
+.hidden{
+  display: none;
+}
+
+.welcome-board{
+  background-color: #2196F3;
+}
+
+.board{
+  background: lightgrey;
+}
+
+.play-game {
   height: 200px;
   width: 400px;
   border: 10px pink;
@@ -67,22 +76,14 @@ button {
   text-align: center;
   font-family: 'Luckiest Guy', cursive;
   font-size: 70px;
-}
-
-
-.welcome-board{
 
 }
 
-.board{
-height: 1200px;
-width: 1200px;
-background: lightgrey;
+div {
+  height: 100px;
+  width: 100px;
+  position:absolute;
 }
-
-.character {
-}
-
 
 .desk {
   margin: 0;
@@ -98,20 +99,21 @@ background: lightgrey;
 }
 
 #hero {
+  height: 100px;
+  width: 100px;
   background: blue;
   position: relative;
-  left: 1100px;
-  top: 1100px;
 }
 
 #friend {
+  height: 100px;
+  width: 100px;
   position: relative;
   background: green;
 
 }
 
-#play-game {
-
-
-
+#board-id{
+  height: 1200px;
+  width: 1200px;
 }

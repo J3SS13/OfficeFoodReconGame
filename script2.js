@@ -1,44 +1,35 @@
 
-
+const welcomeboardElement = document.querySelector('.welcome-board');
+const boardElement = document.querySelector('#board-id');
+const characterElement = document.querySelector('.character');
 const body = document.querySelector('body');
 const header = body.querySelector('header');
 const playGameButton = body.querySelector('button');
 
-
-
 const buildWelcomePage = function() {
-  playGameButton.id = "play-game";
-
+  playGameButton.className = "play-game";
   playGameButton.addEventListener("click", function(){
     clickButton();
     buildBoard();
   });
 }
 
-
-
-
-
-
-
 buildWelcomePage();
-
 
 const clickButton = ()=>{
   playGameButton.removeEventListener('click', (buildBoard));
-  header.innerHTML = '<h1>Office Food Recon</h1>';
+  playGameButton.className = "hidden";
+  boardElement.className = "board";
+  boardElement.innerHTML = "";
+  // header.innerHTML = '<h1>Office Food Recon</h1>';
+  // change button to hidden
+  // change .game-info to .hidden
 }
-
-
-
-
 
 /////////////////////     GAME      ///////////////////////////
 
 
 
-const boardElement = document.querySelector('.board');
-const characterElement = document.querySelector('.character');
 
 const character = {x:11, y:11};
 const friends = [{x:10, y:0}];
@@ -281,7 +272,6 @@ const moveCharacter = function (x,y){
 const moveRight = function(){
   if (canMoveTo(character.x + 1, character.y)){
     character.x +=1;
-    console.log("right");
     moveCharacter(character.x , character.y)
   }
 }
@@ -289,7 +279,6 @@ const moveRight = function(){
 const moveLeft = function(){
   if(canMoveTo(character.x - 1, character.y)){
     character.x -=1;
-    console.log("left");
     moveCharacter(character.x, character.y);
   }
 }
@@ -297,7 +286,6 @@ const moveLeft = function(){
 const moveUp = function(){
   if(canMoveTo(character.x, character.y - 1)){
     character.y -=1;
-    console.log("up");
     moveCharacter(character.x, character.y);
   }
 }
@@ -305,7 +293,6 @@ const moveUp = function(){
 const moveDown = function(){
   if(canMoveTo(character.x, character.y + 1)){
     character.y +=1;
-    console.log("down")
     moveCharacter(character.x, character.y);
   }
 }
@@ -349,9 +336,9 @@ const lose = function(){
 const resetBoard = function(){
       boardElement.innerHTML = '';
       foodEaten = 0;
-      // character.x = 11;
-      // character.y = 11;
-      // characterElement.style.top = "1100px";
-      // characterElement.style.left = "1100px"
+      character.x = 11;
+      character.y = 11;
+      characterElement.style.top = "1100px";
+      characterElement.style.left = "1100px"
       buildBoard();
 }
