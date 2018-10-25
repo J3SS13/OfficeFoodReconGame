@@ -6,6 +6,9 @@ const body = document.querySelector('body');
 const header = body.querySelector('header');
 const playGameButton = body.querySelector('button');
 
+
+/////////////////////    Welcome Page      /////////////////////
+
 const buildWelcomePage = function() {
   playGameButton.className = "play-game";
   playGameButton.addEventListener("click", function(){
@@ -26,9 +29,14 @@ const clickButton = ()=>{
   // change .game-info to .hidden
 }
 
+/////////// TIMER  Global Variables /////////////
+
+let setTimer;
+let timeOut = 20;
+let footerDiv = body.querySelector('#timer')
+
+
 /////////////////////     GAME      ///////////////////////////
-
-
 
 
 const character = {x:11, y:11};
@@ -154,11 +162,28 @@ const renderCharacterStyle = () => {
 
 
 const buildBoard = function(){
+debugger
+
+footerDiv.innerHTML = "Ready?";
+    setTimer =  setInterval(() => {
+footerDiv.innerHTML = "Set!";
+          if (timeOut > 0){
+            footerDiv.innerHTML = timeOut + " seconds left!";
+            timeOut -=1;
+          }
+          else if (timeOut === 0){
+            timeOut = 20;
+            resetBoard();
+          }
+      }, 1000);
+
   renderDesks();
   renderCoworkers();
   renderFood();
   renderFriend();
   renderCharacterStyle();
+
+
 }
 
 // buildBoard();
@@ -334,6 +359,8 @@ const lose = function(){
 }
 
 const resetBoard = function(){
+      clearInterval(setTimer);
+      timeOut = 20;
       boardElement.innerHTML = '';
       foodEaten = 0;
       character.x = 11;

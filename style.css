@@ -14,7 +14,7 @@
 
 body {
   display: grid;
-  grid-template-columns: repeat (4, 1fr);
+  grid-template-columns: repeat (3, 1fr);
   grid-auto-rows: minmax(100px, auto);
   grid-gap: 10px;
   background-color: #2196F3;
@@ -40,6 +40,7 @@ h1 {
 
 }
 
+
 main{
  grid-column: 2 / 3;
  grid-row: 2 / 2;
@@ -48,11 +49,22 @@ main{
 
 }
 
+div {
+  height: 100px;
+  width: 100px;
+  position:absolute;
+}
+
 p {
   font-family: Monda, sans-serif;
   font-size: 40px;
-
 }
+
+footer{
+  grid-row: 3;
+  grid-column: 2;
+}
+
 .hidden{
   display: none;
 }
@@ -68,7 +80,7 @@ p {
 .play-game {
   height: 200px;
   width: 400px;
-  border: 10px pink;
+  border-radius: 10%;
   background: #752AE8;
   animation-name: button;
   animation-duration: 4s;
@@ -79,11 +91,6 @@ p {
 
 }
 
-div {
-  height: 100px;
-  width: 100px;
-  position:absolute;
-}
 
 .desk {
   margin: 0;
@@ -116,4 +123,13 @@ div {
 #board-id{
   height: 1200px;
   width: 1200px;
+}
+
+#timer{
+  height: 200px;
+  width: 400px;
+  color: white;
+  text-align: center;
+  font-family: 'Luckiest Guy', cursive;
+  font-size: 70px;
 }
