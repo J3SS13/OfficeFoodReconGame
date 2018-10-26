@@ -251,7 +251,7 @@ const eatTheFood = function(x,y){
     const food = foodz[i];
     if(food.x === character.x && food.y === character.y) {
       const food = document.querySelector(`#food${i}`)
-    food.remove();
+      food.remove();
       foodEaten += 1;
 
     }
