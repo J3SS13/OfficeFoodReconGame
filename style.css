@@ -18,7 +18,7 @@ body {
   grid-template-columns: repeat (3, 1fr);
   grid-auto-rows: minmax(100px, auto);
   grid-gap: 10px;
-  background-color: #2196F3;
+  background-color: #D6FBFF;
   padding: 10px;
 }
 
@@ -81,8 +81,8 @@ button{
 }
 
 .welcome-board{
-  background-color: white;
-  border: 20px grey;
+  /* background-color: white;
+  border: 20px grey; */
 }
 
 .board{
@@ -140,7 +140,7 @@ button{
 #timer{
   height: 200px;
   width: 600px;
-  color: white;
+  color: #E80CD5;
   text-align: center;
   font-family: 'Luckiest Guy', cursive;
   font-size: 70px;
