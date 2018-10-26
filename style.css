@@ -57,18 +57,23 @@ div {
 
 p {
   font-family: Monda, sans-serif;
-  font-size: 40px;
+  font-size: 38px;
   margin: 0 auto;
+  padding: 50px;
 }
 
 span{
-  font-weight: bold;
+  font-weight: 800;
 
 }
 
 footer{
+
   grid-row: 3;
   grid-column: 2;
+}
+button{
+  margin: 30px 0 0 400px;
 }
 
 .hidden{
@@ -76,7 +81,8 @@ footer{
 }
 
 .welcome-board{
-  background-color: #2196F3;
+  background-color: white;
+  border: 20px grey;
 }
 
 .board{
@@ -133,9 +139,24 @@ footer{
 
 #timer{
   height: 200px;
-  width: 400px;
+  width: 600px;
   color: white;
   text-align: center;
   font-family: 'Luckiest Guy', cursive;
   font-size: 70px;
+  margin-left: 300px;
+}
+
+
+#email-header{
+background: #F7F7F7
+}
+
+#email-body{
+border-top: 5px grey;
+border-bottom: 50px grey;
+}
+
+#email-footer{
+  background: #F7F7F7
 }
