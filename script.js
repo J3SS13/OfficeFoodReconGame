@@ -1,22 +1,55 @@
-const boardElement = document.querySelector('.board');
+
+const welcomeboardElement = document.querySelector('.welcome-board');
+const boardElement = document.querySelector('#board-id');
 const characterElement = document.querySelector('.character');
+const body = document.querySelector('body');
+const header = body.querySelector('header');
+const playGameButton = body.querySelector('button');
+
+
+/////////////////////    Welcome Page      /////////////////////
+
+const buildWelcomePage = function() {
+  playGameButton.className = "play-game";
+  playGameButton.addEventListener("click", function(){
+    setTimeout(clickButton, 175);
+    setTimeout(buildBoard, 175);
+  });
+}
+
+buildWelcomePage();
+
+const clickButton = ()=>{
+  playGameButton.removeEventListener('click', (buildBoard));
+  playGameButton.className = "hidden";
+  boardElement.className = "board";
+  boardElement.innerHTML = "";
+  // header.innerHTML = '<h1>Office Food Recon</h1>';
+  // change button to hidden
+  // change .game-info to .hidden
+}
+
+/////////// TIMER  Global Variables /////////////
+
+let setTimer;
+let timeOut = 20;
+let footerDiv = body.querySelector('#timer')
+
+
+/////////////////////     GAME      ///////////////////////////
+
 
 const character = {x:11, y:11};
-const friend = [{x:10, y:0}];
+const friends = [{x:10, y:0}];
 
 const friendZone = [
   {x:11, y:0},
-  {x:11, y:1},
-  {x:10, y:0},
   {x:10, y:1},
   {x:9, y:0},
-  {x:9, y:1}
-
 ];
 let foodEaten = 0;
 
 const desks = [
-  {x:0, y:0},
   {x:0, y:10},
   {x:1, y:10},
   {x:2, y:10},
@@ -68,10 +101,6 @@ const foodz = [
   {x:9, y:5}
 ];
 
-console.log(foodz[0].x);
-console.log(foodz[0].y);
-
-
 /// Render desks to board
 const renderDesks = () => {
   for (let i = 0; i < desks.length; i +=1){
@@ -84,6 +113,7 @@ const renderDesks = () => {
   }
 }
 
+
 /// Render coworkers to board
 const renderCoworkers = () => {
   for (let i = 0; i < coworkers.length; i +=1){
@@ -94,7 +124,6 @@ const renderCoworkers = () => {
     coworkerElement.style.left = (coworker.x * 100).toString() + 'px';
     coworkerElement.style.top = (coworker.y * 100).toString() + 'px';
     boardElement.appendChild(coworkerElement);
-    console.log(coworker);
   }
 }
 
@@ -104,23 +133,59 @@ const renderFood = () => {
     const food = foodz[i];
     const foodElement = document.createElement('div');
     foodElement.className = 'food';
-    foodElement.id= `food${i.x}${i.y}`;
+    foodElement.id= `food${i}`;
     foodElement.style.left = (food.x * 100).toString() + 'px';
     foodElement.style.top = (food.y * 100).toString() + 'px';
     boardElement.appendChild(foodElement);
-    console.log(food);
   }
 }
 
+//render friend
+const renderFriend = () => {
+  for(let i = 0; i < friends.length; i +=1){
+    const friend = friends[i];
+    const friendElement = document.createElement('div');
+    friendElement.id = "friend"
+    friendElement.style.left = (friend.x * 100).toString() + 'px';
+    friendElement.style.top = (friend.y * 100).toString() + 'px';
+    boardElement.appendChild(friendElement);
+  }
+
+}
+
+// render hero character
+const renderCharacterStyle = () => {
+  characterElement.id = "hero"
+  characterElement.style.left = (character.x * 100).toString() + 'px';
+  characterElement.style.top = (character.y * 100).toString() + 'px';
+  }
 
 
 const buildBoard = function(){
+
+footerDiv.innerHTML = "Ready?";
+    setTimer =  setInterval(() => {
+footerDiv.innerHTML = "Set!";
+          if (timeOut > 0){
+            footerDiv.innerHTML = timeOut + " seconds left!";
+            timeOut -=1;
+          }
+          else if (timeOut === 0){
+            timeOut = 20;
+            resetBoard();
+          }
+      }, 1000);
+
   renderDesks();
   renderCoworkers();
   renderFood();
+  renderFriend();
+  renderCharacterStyle();
+
+
 }
 
-buildBoard();
+// buildBoard();
 
 
 /// MOVE LOGIC :
@@ -155,8 +220,8 @@ const isThereCoworker = function(x,y){
 
 
 const isThereFriend = function(x,y){
-  for (let i = 0; i < friend.length; i +=1) {
-    const friendLocal = friend[i];
+  for (let i = 0; i < friends.length; i +=1) {
+    const friendLocal = friends[i];
     if (friendLocal.x === x && friendLocal.y === y) {
       // setTimeout(()=> window.alert("I'm so hungryyyy"), 200);
       return true;
@@ -170,10 +235,10 @@ const isThereFriend = function(x,y){
 const isThereFriendZone = function(x,y){
   for (let i = 0; i < friendZone.length; i +=1){
     const friendZ = friendZone[i];
-      if (friendZ.x === character.x && friendZ.y === character.y && foodz.length === 0){
+      if (friendZ.x === character.x && friendZ.y === character.y && foodEaten >= foodz.length){
         console.log("win");
         win();
-      } if (friendZ.x === character.x && friendZ.y === character.y && foodz.length !== 0){
+      } if (friendZ.x === character.x && friendZ.y === character.y && foodEaten < foodz.length){
         console.log("hungry");
         setTimeout(()=> window.alert("I'm so hungryyyy"), 200);
       }
@@ -182,26 +247,16 @@ const isThereFriendZone = function(x,y){
 
 
 const eatTheFood = function(x,y){
-  // debugger
   for(let i = 0; i < foodz.length; i +=1){
     const food = foodz[i];
     if(food.x === character.x && food.y === character.y) {
-      console.log(foodz[i]);
-      foodz.splice(i, 1);
-      foodEaten +=1;
-
-      const food = document.querySelector(`#food${i.x}${i.y}`)
-      food.setAttribute('style', 'display: none');
+      const food = document.querySelector(`#food${i}`)
+    food.remove();
+      foodEaten += 1;
 
     }
   }
 }
-
-
-
-
-
-
 
 
 //Check to see if character can move to a space
@@ -241,7 +296,6 @@ const moveCharacter = function (x,y){
 const moveRight = function(){
   if (canMoveTo(character.x + 1, character.y)){
     character.x +=1;
-    console.log("right");
     moveCharacter(character.x , character.y)
   }
 }
@@ -249,7 +303,6 @@ const moveRight = function(){
 const moveLeft = function(){
   if(canMoveTo(character.x - 1, character.y)){
     character.x -=1;
-    console.log("left");
     moveCharacter(character.x, character.y);
   }
 }
@@ -257,7 +310,6 @@ const moveLeft = function(){
 const moveUp = function(){
   if(canMoveTo(character.x, character.y - 1)){
     character.y -=1;
-    console.log("up");
     moveCharacter(character.x, character.y);
   }
 }
@@ -265,7 +317,6 @@ const moveUp = function(){
 const moveDown = function(){
   if(canMoveTo(character.x, character.y + 1)){
     character.y +=1;
-    console.log("down")
     moveCharacter(character.x, character.y);
   }
 }
@@ -292,12 +343,7 @@ document.body.addEventListener('keydown', evt => {
   }
 });
 
-//
-// const setTimer = function() {
 
-
-//
-// }
 
 const win = function() {
         setTimeout(()=> window.alert("Good job finding all the food! Now, let's eat!"), 200);
@@ -311,8 +357,9 @@ const lose = function(){
   setTimeout(resetBoard, 200);
 }
 
-
 const resetBoard = function(){
+      clearInterval(setTimer);
+      timeOut = 20;
       boardElement.innerHTML = '';
       foodEaten = 0;
       character.x = 11;
